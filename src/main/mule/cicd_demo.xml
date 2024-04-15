@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="03c64c4d-d187-4a0b-bd89-f7600a5f23aa" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="cicd_demoFlow" doc:id="02ccd477-c226-4773-9213-588e3a61d689" >
+		<http:listener doc:name="Listener" doc:id="3619ea7b-d4d8-4619-92c1-6f289b4233ba" config-ref="HTTP_Listener_config" path="/cicd"/>
+		<logger level="INFO" doc:name="Start_Logger" doc:id="d953a087-0323-44e6-9065-eb4966280be9" message='#["Start of the flow"]'/>
+		<set-payload value='#["CICD PIPE LINE IS SUCCESSFULLY DEPLOYED"]' doc:name="Set Payload" doc:id="b22a65ac-caa1-4bfe-9f80-dfe1bb17540b" />
+		<logger level="INFO" doc:name="Start_Logger" doc:id="64c7f0cf-1267-4a0b-9c9d-f4f3a7b8405c" message='#["End of the flow"]'/>
+	</flow>
+</mule>
